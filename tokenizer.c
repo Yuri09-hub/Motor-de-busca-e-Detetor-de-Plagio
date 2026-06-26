@@ -15,7 +15,6 @@ int is_stopword(const char *word)
 	
 	return 0 ;
 }
-
 static void normalize (char *dest,const char *src)
 {
 	int j=0;
@@ -35,7 +34,7 @@ static void normalize (char *dest,const char *src)
 TokenList* tokenize_file(const char *filepath) {
 	FILE *f = fopen(filepath, "r");
 	if (!f) { perror("fopen"); return NULL; }
-	TokenList *tl = calloc(1, sizeof(TokenList));
+	TokenList *tl = (TokenList*)calloc(1, sizeof(TokenList));
 	char raw[MAX_TOKEN_LEN * 2];
 	while (fscanf(f, "%s", raw) == 1 && tl->count < MAX_TOKENS) {
 		char norm[MAX_TOKEN_LEN];
@@ -50,9 +49,8 @@ return tl;
 }
 
 TokenList* tokenize_string(const char *text) {
-/* Copia o texto para um buffer temporário e tokeniza */
 	char *buf = strdup(text);
-	TokenList *tl = calloc(1, sizeof(TokenList));
+	TokenList *tl = (TokenList*)calloc(1, sizeof(TokenList));
 	char *tok = strtok(buf, " \t\n\r.,!?;:\"'()[]{}");
 	while (tok && tl->count < MAX_TOKENS) {
 		char norm[MAX_TOKEN_LEN];
