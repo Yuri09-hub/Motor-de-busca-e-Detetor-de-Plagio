@@ -10,7 +10,7 @@
 #define MAX_TOKENS 4096
 
 typedef struct{
-	char words [MAX_TOKENS][MAX_TOKEN_LEN]
+	char words [MAX_TOKENS][MAX_TOKEN_LEN];
 	int count;
 }TokenList;
 

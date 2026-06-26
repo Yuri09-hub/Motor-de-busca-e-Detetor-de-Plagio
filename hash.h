@@ -5,25 +5,24 @@
 #ifndef HASH_H
 #define HASH_H
 #define TAM_PALAVRA 30
-typedef struct  {
-    int freq, id;
-    struct Ocorrencia *prox;
-}Ocorrencia;
+#include "frequencia.h"
 
 typedef struct {
-    char palavra[TAM_PALAVRA];
-    Ocorrencia * lista;// pra identificar os documentos
-    struct Palavra *prox;
+  char palavra[TAM_PALAVRA];
+  ocor * lista;// pra identificar os documentos
+  int ocupado;
 }Palavra;
 
 
 typedef struct {
   int qtd, Tamanho;
-  Palavra * lista_de_palavra;
-}hash;
+  Palavra * tabela;
+}hashTable;
 
 
-hash* inicializar_tabela(int Tamanho);
+hashTable* inicializar_tabela(int Tamanho);
 
+int funcao_hash( char palavra[30], int tamanho);
+hashTable* insercao_de_palavra(hashTable*tabela,char palavra[30]);
 
 #endif //HASH_H
