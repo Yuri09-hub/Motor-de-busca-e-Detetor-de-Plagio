@@ -4,16 +4,26 @@
 
 #ifndef HASH_H
 #define HASH_H
-typedef struct doc {
-    int id;
-    char caminho[50];
-    int tam_palavra;
-};
+#define TAM_PALAVRA 30
+typedef struct  {
+    int freq, id;
+    struct Ocorrencia *prox;
+}Ocorrencia;
 
-typedef struct hash {
+typedef struct {
+    char palavra[TAM_PALAVRA];
+    Ocorrencia * lista;// pra identificar os documentos
+    struct Palavra *prox;
+}Palavra;
+
+
+typedef struct {
   int qtd, Tamanho;
-  struct doc * item;
-};
+  Palavra * lista_de_palavra;
+}hash;
+
+
+hash* inicializar_tabela(int Tamanho);
 
 
 #endif //HASH_H
