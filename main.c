@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "hash.h"
 
 void menu(){
     printf("==========================================\n");
@@ -16,12 +17,16 @@ void menu(){
     printf("8 - Mostrar percentagem de similaridade   \n");
     printf("--------------- SISTEMA ------------------\n");
     printf("0 - sair                                  \n");
+    printf("==========================================\n");
     printf(" /> ");
 
+
 }
+#define TAM 10000
 
 int main(void) {
     int escolha;
+    hashTable* tabela = inicializar_tabela(TAM);
 
     do {
         menu();
