@@ -22,7 +22,7 @@ typedef struct {
 
 hashTable* inicializar_tabela(int Tamanho);
 
-int funcao_hash( char palavra[30], int tamanho);
-hashTable* insercao_de_palavra(hashTable*tabela,char palavra[30]);
+unsigned long funcao_hash(char palavra[30]);
+hashTable* insercao_de_palavra(hashTable*tabela,char palavra[30],int id);
 
 #endif //HASH_H

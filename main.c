@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "hash.h"
 
+
 void menu(){
     printf("==========================================\n");
     printf("  MOTOR DE BUSCA E DETECTOR DE PLAGIO     \n");
