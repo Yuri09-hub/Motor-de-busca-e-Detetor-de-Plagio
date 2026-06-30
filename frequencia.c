@@ -26,13 +26,12 @@ ocor *adiciona_freq(ocor*lista,int id) {
         return NULL;
     }
     ocor * aux = lista;
-    while (aux->prox != NULL) {
+    while (aux!= NULL) {
         if (aux->id == id) {
             aux->freq++;
-            printf("Ocorrencia adicionada");
             return lista;
         }
-        aux->prox = aux->prox;
+        aux  = aux->prox;
     }
     return lista;
 }
@@ -41,22 +40,34 @@ int verfica_doc_na_lista(ocor*lista, int id) {
     if (lista==NULL)
         return 0;
     ocor * aux = lista;
-    while (aux->prox != NULL) {
+    while (aux != NULL) {
         if (aux->id == id) {
             return 1;
         }
-        aux->prox = aux->prox;
+        aux = aux->prox;
     }
     return 0;
 }
 
 ocor *inserir_na_lista(ocor*lista,ocor* new_doc) {
-    if (lista==NULL)
-        return NULL;
+    if (lista==NULL) {
+        return new_doc;
+    }
     ocor* aux = lista;
     while (aux->prox != NULL) {
         aux = aux->prox;
     }
     aux->prox = new_doc;
     return lista;
+}
+
+void imprimir_lista_ocor(ocor *lista)
+{
+    ocor *aux = lista;
+    while (aux != NULL)
+    {
+        printf("(Doc%d, freq:%d) -> ", aux->id, aux->freq);
+        aux = aux->prox;
+    }
+    printf("NULL\n");
 }

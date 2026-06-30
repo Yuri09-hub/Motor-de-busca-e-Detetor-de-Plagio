@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 #include "hash.h"
 
 
@@ -23,11 +25,18 @@ void menu(){
 
 
 }
-#define TAM 10000
+#define TAM 11
+
 
 int main(void) {
     int escolha;
     hashTable* tabela = inicializar_tabela(TAM);
+
+    tabela = insercao_de_palavra(tabela,"Casa",1);
+    tabela = insercao_de_palavra(tabela,"Casa",1);
+    tabela = insercao_de_palavra(tabela,"domingo",1);
+    imprimir(tabela);
+    return 0;
 
     do {
         menu();
@@ -67,5 +76,5 @@ int main(void) {
 
 
 
-    return 0;
+
 }

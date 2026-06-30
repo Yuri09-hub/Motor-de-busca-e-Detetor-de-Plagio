@@ -31,7 +31,7 @@ hashTable* inicializar_tabela(int Tamanho) {
 
 }
 
-unsigned long funcao_hash( char palavra[30]) {
+unsigned long funcao_hashing( char palavra[30]) {
     unsigned long hash = 5381;
     char * p = palavra;
     int c;
@@ -45,23 +45,56 @@ unsigned long funcao_hash( char palavra[30]) {
     return hash;
 }
 
+int verficar_palavra_na_hash(hashTable* tabela,char palavra[30]) {
+
+    for (int i = 0; i < tabela->Tamanho; i++) {
+        if (strcmp(tabela -> tabela[i].palavra, palavra) == 0 ) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 hashTable* insercao_de_palavra(hashTable*tabela,char palavra[30], int id) {
 
-    int index =  funcao_hash(palavra) % tabela-> Tamanho ;
-    while (tabela-> tabela[index].ocupado != -1) {
-        index = (index+1) % tabela-> Tamanho;
-    }
-    tabela-> tabela[index].ocupado = 1;
-    strcpy(tabela -> tabela[index].palavra, palavra);
-   int x = verfica_doc_na_lista(tabela->tabela[index].lista,id);
-    if (x == 0) {
-       ocor* novo = criar_doc(id);
-        tabela->tabela[index].lista = inserir_na_lista(tabela->tabela[index].lista,novo);
+    int verfica = verficar_palavra_na_hash(tabela,palavra);
+
+    if ( verfica != -1) { // palavra existe
+
+        // verifica se o doc ja existe na hash
+        int x = verfica_doc_na_lista(tabela->tabela[verfica].lista,id);
+        if (x == 0) { // não existe
+            ocor* novo = criar_doc(id);
+            tabela->tabela[verfica].lista = inserir_na_lista(tabela->tabela[verfica].lista,novo);
+        }
+        else // existe
+            tabela -> tabela[verfica].lista = adiciona_freq(tabela -> tabela[verfica].lista,id);
+
+    }else{ // palavra não existe na hash
+
+        int index = (int)(funcao_hashing(palavra) % (unsigned long)tabela-> Tamanho) ;
+
+        while (tabela-> tabela[index].ocupado != -1) {
+            index = (index+1) % tabela-> Tamanho;
+        }
+        tabela-> tabela[index].ocupado = 1;
+        strcpy(tabela -> tabela[index].palavra, palavra);
         tabela ->qtd++;
-    }
-    else {
-        tabela -> tabela[index].lista = adiciona_freq(tabela -> tabela[index].lista,id);
-    }
+
+        // criar o doc na lista de ocorrencias
+        ocor* novo = criar_doc(id);
+        tabela->tabela[index].lista = inserir_na_lista(tabela->tabela[index].lista,novo);
+      }
     return tabela;
 
+}
+
+void imprimir (hashTable* tabela) {
+
+    for (int i = 0; i < tabela->Tamanho; i++) {
+        printf("[%d] - %s ->",i, tabela -> tabela[i].palavra);
+        imprimir_lista_ocor(tabela->tabela[i].lista);
+        printf("\n");
+    }
+    printf("quantidade de elementos inserido: %d", tabela->qtd);
 }
