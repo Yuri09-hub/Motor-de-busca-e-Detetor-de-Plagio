@@ -50,16 +50,17 @@ int main(void) {
                 system("cls");
                 break;
             case 2:
-        	    system("cls");
+		    system("cls");
                 printf("case2 \n");
                 printf("Digite a palavra: ");
-                scanf("%29s", palavra);
+                scanf(" %29[^\n]", palavra);
                 getchar();
+
                 pesquisa_palavra(tabela, palavra);
                 printf("\n");
                 break;
             case 3:
-            	system("cls");
+			 system("cls");
                 printf("case3 \n");
                 printf("Digite o prefixo: ");
                 scanf("%29s", palavra);
@@ -70,8 +71,9 @@ int main(void) {
                 break;
             case 4:
             	system("cls");
-				imprimir(tabela);
+			imprimir(tabela);
                 printf("\n");
+
                 break;
             case 5:
             	system("cls");
@@ -90,6 +92,7 @@ int main(void) {
             case 8:
                 printf("case8 \n");
                 break;
+
             case 0:
                 printf("Saindo... \n");
                 break;
