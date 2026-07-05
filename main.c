@@ -45,18 +45,16 @@ int main(void) {
                 printf("case1 \n");
                 break;
             case 2:
-                printf("case2 \n");
-                break;
-            case 3:
-                printf("case3 \n");
-                break;
-            case 4:
-
                 printf("digite a palavra: ");
                 scanf("%[^\n]",palavra);
 
                 pesquisa_palavra(tabela, palavra);
                 printf("\n");
+                break;
+            case 3:
+                printf("case3 \n");
+                break;
+            case 4:
 
                 break;
             case 5:
@@ -65,12 +63,6 @@ int main(void) {
             case 6:
                 imprimir(tabela);
                 printf("case5 \n");
-                break;
-            case 7:
-                printf("case7 \n");
-                break;
-            case 8:
-                printf("case8 \n");
                 break;
             case 0:
                 printf("Saindo... \n");

@@ -30,6 +30,7 @@
   <component name="ChangeListManager">
     <list default="true" id="070b4d4c-ff66-401a-a96a-6e32271541e8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +43,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/tokenizer.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -103,7 +107,7 @@
       <workItem from="1782464184780" duration="28418000" />
       <workItem from="1782815050720" duration="15088000" />
       <workItem from="1782858301503" duration="2162000" />
-      <workItem from="1783255135314" duration="8334000" />
+      <workItem from="1783255135314" duration="12591000" />
     </task>
     <servers />
   </component>
