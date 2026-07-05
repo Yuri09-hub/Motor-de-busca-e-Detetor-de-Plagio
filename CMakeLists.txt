@@ -7,4 +7,6 @@ add_executable(Motor_de_busca_e_Detetor_de_Plagio main.c
         hash.h
         hash.c
         frequencia.h
-        frequencia.c)
+        frequencia.c
+        plagio.h
+        plagio.c)
