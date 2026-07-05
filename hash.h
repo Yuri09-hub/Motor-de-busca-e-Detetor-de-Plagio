@@ -25,4 +25,6 @@ unsigned long funcao_hashing(char palavra[30]);
 hashTable* insercao_de_palavra(hashTable*tabela,char palavra[30],int id);
 int verficar_palavra_na_hash(hashTable*tabela,char palavra[30]);
 void imprimir (hashTable* tabela);
+void pesquisa_palavra(hashTable*tabela, char palavra[30]);
+void liberar_hash(hashTable*tabela);
 #endif //HASH_H

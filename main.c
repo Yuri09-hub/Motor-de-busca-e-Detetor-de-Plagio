@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "hash.h"
+
 
 
 void menu(){
@@ -13,8 +13,8 @@ void menu(){
     printf("3 - Listar documentos                     \n");
     printf("---------------- BUSCA -------------------\n");
     printf("4 - Pesquisar palavra                     \n");
-    printf("5 - Pesquisar frase                       \n");
-    printf("6 - Sugestoes de pesquisa                 \n");
+    printf("5 - Sugestoes de pesquisa                 \n");
+    printf("6 - Visualizar tabela hash                \n");
     printf("--------------- PLAGIO -------------------\n");
     printf("7 - Comparar dois documentos              \n");
     printf("8 - Mostrar percentagem de similaridade   \n");
@@ -25,22 +25,23 @@ void menu(){
 
 
 }
-#define TAM 11
+#define TAM 1001
 
 
 int main(void) {
     int escolha;
     hashTable* tabela = inicializar_tabela(TAM);
+    char palavra[30];
 
     tabela = insercao_de_palavra(tabela,"Casa",1);
     tabela = insercao_de_palavra(tabela,"Casa",1);
     tabela = insercao_de_palavra(tabela,"domingo",1);
-    imprimir(tabela);
-    return 0;
 
     do {
         menu();
         scanf("%d", &escolha);
+        getchar();
+
         switch (escolha) {
             case 1:
                 printf("case1 \n");
@@ -52,9 +53,19 @@ int main(void) {
                 printf("case3 \n");
                 break;
             case 4:
-                printf("case4 \n");
+
+                printf("digite a palavra: ");
+                scanf("%[^\n]",palavra);
+
+                pesquisa_palavra(tabela, palavra);
+                printf("\n");
+
                 break;
             case 5:
+                printf("case5 \n");
+                break;
+            case 6:
+                imprimir(tabela);
                 printf("case5 \n");
                 break;
             case 7:
@@ -73,7 +84,7 @@ int main(void) {
 
     }while (escolha != 0);
 
-
+return 0;
 
 
 

@@ -30,6 +30,11 @@
   <component name="ChangeListManager">
     <list default="true" id="070b4d4c-ff66-401a-a96a-6e32271541e8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frequencia.c" beforeDir="false" afterPath="$PROJECT_DIR$/frequencia.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frequencia.h" beforeDir="false" afterPath="$PROJECT_DIR$/frequencia.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hash.c" beforeDir="false" afterPath="$PROJECT_DIR$/hash.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hash.h" beforeDir="false" afterPath="$PROJECT_DIR$/hash.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +90,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -101,7 +101,9 @@
       <workItem from="1781360966152" duration="1600000" />
       <workItem from="1781363207308" duration="2327000" />
       <workItem from="1782464184780" duration="28418000" />
-      <workItem from="1782815050720" duration="14405000" />
+      <workItem from="1782815050720" duration="15088000" />
+      <workItem from="1782858301503" duration="2162000" />
+      <workItem from="1783255135314" duration="4830000" />
     </task>
     <servers />
   </component>

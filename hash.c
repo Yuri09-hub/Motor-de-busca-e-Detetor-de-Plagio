@@ -72,7 +72,7 @@ hashTable* insercao_de_palavra(hashTable*tabela,char palavra[30], int id) {
 
     }else{ // palavra não existe na hash
 
-        int index = (int)(funcao_hashing(palavra) % (unsigned long)tabela-> Tamanho) ;
+        int index = funcao_hashing(palavra) % tabela-> Tamanho ;
 
         while (tabela-> tabela[index].ocupado != -1) {
             index = (index+1) % tabela-> Tamanho;
@@ -97,4 +97,17 @@ void imprimir (hashTable* tabela) {
         printf("\n");
     }
     printf("quantidade de elementos inserido: %d", tabela->qtd);
+}
+
+void pesquisa_palavra(hashTable*tabela, char palavra[30]) {
+
+    for (int i = 0; i < tabela->Tamanho; i++) {
+        if (strcmp(tabela->tabela[i].palavra, palavra) == 0 ) {
+            printf("[%d] - %s ->",i, tabela -> tabela[i].palavra);
+            imprimir_lista_ocor(tabela->tabela[i].lista);
+            printf("\n");
+            return;
+        }
+    }
+    printf("Palavra nao encontrada");
 }

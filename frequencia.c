@@ -71,3 +71,4 @@ void imprimir_lista_ocor(ocor *lista)
     }
     printf("NULL\n");
 }
+
