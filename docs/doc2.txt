@@ -1,0 +1,5 @@
+Redes neuronais artificiais são sistemas computacionais inspirados no cérebro.
+A aprendizagem profunda utiliza múltiplas camadas para processar dados complexos.
+Algoritmos de inteligência artificial transformaram o reconhecimento de padrões
+e o processamento de linguagem natural em aplicações modernas.
+

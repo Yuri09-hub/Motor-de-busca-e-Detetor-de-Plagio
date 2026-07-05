@@ -85,3 +85,17 @@ void liberar_trie(NodeTrie *no) {
     }
     free(no);
 }
+
+NodeTrie* buscar_no_prefixo(NodeTrie *raiz, const char *prefixo) {
+    NodeTrie *no = raiz;
+    if (no == NULL) return NULL;
+
+    for (int i = 0; prefixo[i] != '\0'; i++) {
+        int idx = tolower((unsigned char)prefixo[i]) - 'a';
+        if (idx < 0 || idx >= TAMANHO_ALFABETO) return NULL;
+        if (no->filhos[idx] == NULL) return NULL;
+        no = no->filhos[idx];
+    }
+
+    return no;  /* nó onde o prefixo termina */
+}

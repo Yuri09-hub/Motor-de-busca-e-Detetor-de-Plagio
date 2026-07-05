@@ -11,6 +11,7 @@ typedef struct NodeTrie {
 } NodeTrie;
 
 NodeTrie* inicializar_trie();
+NodeTrie* buscar_no_prefixo(NodeTrie *raiz, const char *prefixo);
 NodeTrie* insercao_de_palavra_trie(NodeTrie *raiz, const char *palavra, int id);
 ocor* buscar_palavra_trie(NodeTrie *raiz, const char *palavra);
 void imprimir_trie(NodeTrie *no, char *buffer, int nivel);

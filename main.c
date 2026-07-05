@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "hash.h"
+#include "document_loader.h"
+#include "trie.h"
 
 
 
@@ -24,17 +26,19 @@ void menu(){
 
 }
 #define TAM 1001
+#define PASTA "docs"
 
 
 int main(void) {
     int escolha;
-    hashTable* tabela = inicializar_tabela(TAM);
+    hashTable* tabela = (hashTable*)inicializar_tabela(TAM);
+	NodeTrie *raiz = (NodeTrie*)inicializar_trie();
+    DocumentLoader *dl=(DocumentLoader*)loader_criar();
+    
+    loader_carregar_pasta(dl,tabela,&raiz,PASTA);
     char palavra[30];
-
-    tabela = insercao_de_palavra(tabela,"Casa",1);
-    tabela = insercao_de_palavra(tabela,"Casa",1);
-    tabela = insercao_de_palavra(tabela,"domingo",1);
-
+    char buffer [100];
+    
     do {
         menu();
         scanf("%d", &escolha);
@@ -42,31 +46,45 @@ int main(void) {
 
         switch (escolha) {
             case 1:
-                printf("case1 \n");
+                printf("case1 \nCarregar Lista de Documentos");
+                system("cls");
                 break;
             case 2:
+        	    system("cls");
                 printf("case2 \n");
-                break;
-            case 3:
-                printf("case3 \n");
-                break;
-            case 4:
-
-                printf("digite a palavra: ");
-                scanf("%[^\n]",palavra);
-
+                printf("Digite a palavra: ");
+                scanf("%29s", palavra);
+                getchar();
                 pesquisa_palavra(tabela, palavra);
                 printf("\n");
-
+                break;
+            case 3:
+            	system("cls");
+                printf("case3 \n");
+                printf("Digite o prefixo: ");
+                scanf("%29s", palavra);
+                getchar();
+                printf("\nPalavras com prefixo '%s':\n", palavra);
+                imprimir_trie(buscar_no_prefixo(raiz, palavra),buffer, 0);
+                printf("\n");
+                break;
+            case 4:
+            	system("cls");
+				imprimir(tabela);
+                printf("\n");
                 break;
             case 5:
+            	system("cls");
                 printf("case5 \n");
                 break;
             case 6:
+            	system("cls");
                 imprimir(tabela);
                 printf("case5 \n");
                 break;
             case 7:
+            	system("cls");
+
                 printf("case7 \n");
                 break;
             case 8:
@@ -79,7 +97,7 @@ int main(void) {
                 printf("Opcao invalida \n");
                 break;
         }
-
+	
     }while (escolha != 0);
 
 return 0;

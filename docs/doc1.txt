@@ -1,0 +1,5 @@
+Aprendizagem automática e inteligência artificial são áreas em rápido crescimento.
+Os algoritmos de aprendizagem profunda revolucionaram o processamento de imagens
+e linguagem natural. Redes neuronais artificiais inspiradas no cérebro humano
+permitem aprender padrões complexos a partir de grandes volumes de dados.
+
