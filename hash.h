@@ -1,7 +1,3 @@
-//
-// Created by Yuri Rodrigues on 13/06/2026.
-//
-
 #ifndef HASH_H
 #define HASH_H
 #define TAM_PALAVRA 30

@@ -10,14 +10,13 @@ void menu(){
     printf("==========================================\n");
     printf("  MOTOR DE BUSCA E DETECTOR DE PLAGIO     \n");
     printf("==========================================\n");
-    printf("1 - Listar documentos                     \n");
     printf("---------------- BUSCA -------------------\n");
-    printf("2 - Pesquisar palavra                     \n");
-    printf("3 - Sugestoes de pesquisa(autocomplete)   \n");
-    printf("4 - Visualizar tabela hash                \n");
+    printf("1 - Pesquisar palavra                     \n");
+    printf("2 - Sugestoes de pesquisa(autocomplete)   \n");
+    printf("3 - Visualizar tabela hash                \n");
     printf("--------------- PLAGIO -------------------\n");
-    printf("5 - Comparar dois documentos              \n");
-    printf("6 - Mostrar percentagem de similaridade   \n");
+    printf("4 - Comparar dois documentos              \n");
+    printf("5 - Mostrar percentagem de similaridade   \n");
     printf("--------------- SISTEMA ------------------\n");
     printf("0 - sair                                  \n");
     printf("==========================================\n");
@@ -46,22 +45,15 @@ int main(void) {
 
         switch (escolha) {
             case 1:
-                printf("case1 \nCarregar Lista de Documentos");
-                system("cls");
-                break;
-            case 2:
-		    system("cls");
-                printf("case2 \n");
+        	    system("cls");
                 printf("Digite a palavra: ");
-                scanf(" %29[^\n]", palavra);
+                scanf("%29s", palavra);
                 getchar();
-
                 pesquisa_palavra(tabela, palavra);
                 printf("\n");
                 break;
-            case 3:
-			 system("cls");
-                printf("case3 \n");
+            case 2:
+            	system("cls");
                 printf("Digite o prefixo: ");
                 scanf("%29s", palavra);
                 getchar();
@@ -69,39 +61,39 @@ int main(void) {
                 imprimir_trie(buscar_no_prefixo(raiz, palavra),buffer, 0);
                 printf("\n");
                 break;
-            case 4:
+            case 3:
             	system("cls");
-			imprimir(tabela);
+				imprimir(tabela);
                 printf("\n");
+                break;
+            case 4: {
+			    /* compara dois documentos específicos */
+			    int a, b;
+			    loader_listar_docs(dl);
+			    printf("Numero do primeiro documento: ");
+			    scanf("%d", &a); getchar();
+			    printf("Numero do segundo documento: ");
+			    scanf("%d", &b); getchar();
+			
+			    if (a >= dl->count || b >= dl->count) {
+			        printf("Numero invalido\n");
+			        break;
+			    }
+			
+			    float sim = jaccard(dl->shingles[a], dl->shingles[b]);
+			    printf("\n%s\nvs\n%s\n", dl->paths[a], dl->paths[b]);
+			    printf("Similaridade: %.1f%%  %s\n",
+			           sim * 100,
+			           sim >= LIMIAR_PLAGIO ? ">>> PLAGIO PROVAVEL!" : "[OK]");
+			    break;
+			}
 
-                break;
-            case 5:
-            	system("cls");
-                printf("case5 \n");
-                break;
-            case 6:
-            	system("cls");
-                imprimir(tabela);
-                printf("case5 \n");
-                break;
-            case 7:
-            	system("cls");
-
-                printf("case7 \n");
-                break;
-            case 8:
-                printf("case8 \n");
-                break;
-
-            case 0:
-                printf("Saindo... \n");
-                break;
-            default:
-                printf("Opcao invalida \n");
-                break;
-        }
-	
-    }while (escolha != 0);
+			case 5:
+			    /* compara todos os documentos */
+			    detectar_plagio(dl->shingles, dl->count, dl->paths);
+			    break;
+			    }
+			    }while (escolha != 0);
 
 return 0;
 

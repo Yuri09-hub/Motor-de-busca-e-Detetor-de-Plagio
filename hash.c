@@ -1,6 +1,3 @@
-//
-// Created by Yuri Rodrigues on 26/06/2026.
-//
 #include "hash.h"
 #include "frequencia.h"
 #include <stdio.h>

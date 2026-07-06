@@ -1,13 +1,11 @@
 #ifndef TRIE_H
 #define TRIE_H
-
 #include "frequencia.h"
-
 #define TAMANHO_ALFABETO 26
 
 typedef struct NodeTrie {
     struct NodeTrie *filhos[TAMANHO_ALFABETO];
-    ocor *lista; // Se for NULL, não é fim de palavra. Se tiver dados, guarda os documentos.
+    ocor *lista; 
 } NodeTrie;
 
 NodeTrie* inicializar_trie();

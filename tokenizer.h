@@ -8,7 +8,6 @@
 
 #define MAX_TOKEN_LEN 64
 
-/* Nó da lista ligada — uma palavra única por nó */
 typedef struct TokenNode {
     char             word[MAX_TOKEN_LEN];
     int              doc_id;
@@ -18,8 +17,8 @@ typedef struct TokenNode {
 
 /* Lista ligada de tokens */
 typedef struct {
-    TokenNode *head;   /* primeiro nó */
-    int        count;  /* total de entradas únicas */
+    TokenNode *head; 
+    int        count;  
 } TokenList;
 
 TokenList* tokenize_file(const char *filepath, int doc_id);

@@ -1,5 +1,0 @@
-Sistemas de gestão de bases de dados relacionais utilizam SQL para consultas.
-Índices B-Tree aceleram as operações de busca e inserção em grandes tabelas.
-A normalização de bases de dados elimina redundâncias e melhora a consistência
-dos dados armazenados em sistemas de informação empresarial.
-

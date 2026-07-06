@@ -8,46 +8,6 @@ DocumentLoader* loader_criar(void) {
     return dl;
 }
 
-void loader_carregar_pasta(DocumentLoader *dl, hashTable *tabela,
-                           NodeTrie **raiz, const char *pasta) {
-    DIR *dir = opendir(pasta);
-    if (!dir) {
-        printf("Erro ao abrir a pasta '%s'\n", pasta);
-        return;
-    }
-
-    struct dirent *entry;
-    while ((entry = readdir(dir)) && dl->count < MAX_FILES) {
-
-        /* só ficheiros .txt */
-        if (!strstr(entry->d_name, ".txt")) continue;
-
-        /* monta caminho completo */
-        snprintf(dl->paths[dl->count], MAX_PATH_LEN,
-                 "%s/%s", pasta, entry->d_name);
-
-        /* tokeniza */
-        TokenList *tl = tokenize_file(dl->paths[dl->count], dl->count);
-        if (!tl) { dl->count++; continue; }
-
-        /* percorre tokens e insere na hash e na trie */
-        TokenNode *cur = tl->head;
-        while (cur) {
-            insercao_de_palavra(tabela, cur->word, cur->doc_id);
-            *raiz = insercao_de_palavra_trie(*raiz, cur->word, cur->doc_id);
-            cur = cur->next;
-        }
-
-        token_list_free(tl);
-
-        printf("[indexado] %s\n", dl->paths[dl->count]);
-        dl->count++;
-    }
-
-    closedir(dir);
-    printf("Total: %d documento(s) indexado(s)\n\n", dl->count);
-}
-
 void loader_listar_docs(DocumentLoader *dl) {
     printf("\n=== DOCUMENTOS CARREGADOS ===\n");
     for (int i = 0; i < dl->count; i++)
@@ -57,4 +17,40 @@ void loader_listar_docs(DocumentLoader *dl) {
 
 void loader_destruir(DocumentLoader *dl) {
     free(dl);
+}
+
+void loader_carregar_pasta(DocumentLoader *dl, hashTable *tabela,NodeTrie **raiz, const char *pasta) 
+{
+    DIR *dir = opendir(pasta);
+    if (!dir) { printf("Erro ao abrir '%s'\n", pasta); return; }
+
+    struct dirent *entry;
+    while ((entry = readdir(dir)) && dl->count < MAX_FILES) {
+        if (!strstr(entry->d_name, ".txt")) continue;
+
+        snprintf(dl->paths[dl->count], MAX_PATH_LEN,
+                 "%s/%s", pasta, entry->d_name);
+
+        /* tokeniza e indexa */
+        TokenList *tl = tokenize_file(dl->paths[dl->count], dl->count);
+        if (tl) {
+            TokenNode *cur = tl->head;
+            while (cur) {
+                insercao_de_palavra(tabela, cur->word, cur->doc_id);
+                *raiz = insercao_de_palavra_trie(*raiz, cur->word, cur->doc_id);
+                cur = cur->next;
+            }
+            token_list_free(tl);
+        }
+
+        /* calcula shingles para detecção de plágio */
+        dl->shingles[dl->count] = calcular_shingles(
+            dl->paths[dl->count], dl->count);
+
+        printf("[indexado] %s\n", dl->paths[dl->count]);
+        dl->count++;
+    }
+
+    closedir(dir);
+    printf("Total: %d documento(s)\n\n", dl->count);
 }

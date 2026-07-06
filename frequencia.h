@@ -1,7 +1,3 @@
-//
-// Created by Yuri Rodrigues on 26/06/2026.
-//
-
 #ifndef FREQUENCIA_H
 #define FREQUENCIA_H
 typedef struct Ocor {
@@ -16,4 +12,4 @@ int verfica_doc_na_lista(ocor*lista, int id);
 void imprimir_lista_ocor(ocor*lista);
 
 
-#endif //FREQUENCIA_H
+#endif
