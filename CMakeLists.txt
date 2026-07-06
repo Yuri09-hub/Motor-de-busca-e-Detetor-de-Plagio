@@ -9,4 +9,11 @@ add_executable(Motor_de_busca_e_Detetor_de_Plagio main.c
         frequencia.h
         frequencia.c
         plagio.h
-        plagio.c)
+        plagio.c
+        trie.c
+        trie.h
+        document_loader.h
+        document_loader.c
+        tokenizer.h
+        tokenizer.c
+)
