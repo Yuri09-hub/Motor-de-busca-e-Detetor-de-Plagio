@@ -4,7 +4,7 @@ typedef struct Ocor {
     int freq, id;
     struct Ocor *prox;
 }ocor;
-ocor * inicializar_lista_freq();
+ocor *inicializar_lista_freq();
 ocor *criar_doc(int id);
 ocor *adiciona_freq(ocor*lista,int id);
 ocor *inserir_na_lista(ocor*lista,ocor* new_doc);
