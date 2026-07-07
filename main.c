@@ -33,6 +33,7 @@ int main(void) {
     hashTable* tabela = (hashTable*)inicializar_tabela(TAM);
 	NodeTrie *raiz = (NodeTrie*)inicializar_trie();
     DocumentLoader *dl=(DocumentLoader*)loader_criar();
+	char enter;
     
     loader_carregar_pasta(dl,tabela,&raiz,PASTA);
     char palavra[30];
@@ -50,6 +51,10 @@ int main(void) {
                 scanf("%29s", palavra);
                 getchar();
                 pesquisa_palavra(tabela, palavra);
+
+        		printf("\n pressione enter pra continuar...");
+        		scanf("%c", &enter);
+
                 printf("\n");
                 break;
             case 2:
@@ -59,11 +64,17 @@ int main(void) {
                 getchar();
                 printf("\nPalavras com prefixo '%s':\n", palavra);
                 imprimir_trie(buscar_no_prefixo(raiz, palavra),buffer, 0);
+
+        		printf("\n pressione enter pra continuar...");
+        		scanf("%c", &enter);
                 printf("\n");
                 break;
             case 3:
             	system("cls");
 				imprimir(tabela);
+
+        		printf("\n pressione enter pra continuar...");
+        		scanf("%c", &enter);
                 printf("\n");
                 break;
             case 4: {
@@ -85,12 +96,17 @@ int main(void) {
 			    printf("Similaridade: %.1f%%  %s\n",
 			           sim * 100,
 			           sim >= LIMIAR_PLAGIO ? ">>> PLAGIO PROVAVEL!" : "[OK]");
+
+            	printf("\n pressione enter pra continuar...");
+            	scanf("%c", &enter);
 			    break;
 			}
 
 			case 5:
 			    /* compara todos os documentos */
 			    detectar_plagio(dl->shingles, dl->count, dl->paths);
+        		printf("\n pressione enter pra continuar...");
+        		scanf("%c", &enter);
 			    break;
 			    }
 			    }while (escolha != 0);
